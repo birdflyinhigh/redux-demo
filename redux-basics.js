@@ -1,6 +1,4 @@
-
-
-
+// 1. create store ,right after the app is initialized , preferably in the index.js file.
 const redux = require('redux');
 
 const createStore = redux.createStore;
@@ -10,7 +8,7 @@ const initialState = {
     counter: 1
 };
 
-// reducer
+// 2. reducer  create the reducer
 // into  state and action, output
 // dont mutate the state, the correct step is to
 // 1. copy the js object first,
