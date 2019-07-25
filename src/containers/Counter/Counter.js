@@ -7,31 +7,27 @@ import CounterOutput from '../../components/CounterOutput/CounterOutput';
 
 class Counter extends Component {
     props;
-    state = {
-        counter: 0
-    };
-
     counterChangedHandler = (action, value) => {
         switch (action) {
             case 'inc':
                 this.setState((prevState) => {
                     return {counter: prevState.counter + 1}
-                })
+                });
                 break;
             case 'dec':
                 this.setState((prevState) => {
                     return {counter: prevState.counter - 1}
-                })
+                });
                 break;
             case 'add':
                 this.setState((prevState) => {
                     return {counter: prevState.counter + value}
-                })
+                });
                 break;
             case 'sub':
                 this.setState((prevState) => {
                     return {counter: prevState.counter - value}
-                })
+                });
                 break;
         }
     };
@@ -44,6 +40,14 @@ class Counter extends Component {
                 <CounterControl label="Decrement" clicked={this.props.onDecrementCounter}/>
                 <CounterControl label="Add 5" clicked={this.props.onAddCounter}/>
                 <CounterControl label="Subtract 5" clicked={this.props.onSubtractCounter}/>
+                <hr/>
+                <button onClick={this.props.onStoreResult}> Store Results </button>
+                <ul>
+                    {this.props.store_results.map(item =>(
+                        <li onClick={this.props.onDeleteResult}>{item.value}</li>
+                    ))}
+
+                </ul>
             </div>
         );
     }
@@ -54,7 +58,8 @@ class Counter extends Component {
 // 1.get state from redux and then convert it into the props of the react component.
 const mapStateToProps = state => {
     return {
-        count: state.counter
+        count: state.counter,
+        store_results: state.results
     };
 };
 
@@ -65,6 +70,8 @@ const mapDispatchToProps = dispatch => {
         onDecrementCounter: () => dispatch({type: 'DECREMENT'}),
         onAddCounter: () => dispatch({type: 'ADD', payload: 15}),
         onSubtractCounter: () => dispatch({type: 'SUBTRACT'}),
+        onStoreResult: ()=>dispatch({type: 'STORE_RESULT'}),
+        onDeleteResult: ()=>dispatch({type: 'DELETE_RESULT'}),
     };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Counter);
