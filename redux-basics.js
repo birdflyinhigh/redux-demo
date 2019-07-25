@@ -1,3 +1,6 @@
+
+
+
 const redux = require('redux');
 
 const createStore = redux.createStore;
@@ -38,6 +41,11 @@ const store = createStore(rootReducer);
 
 console.log(store.getState());
 
+// subscription
+// the subscription is triggered whenever the dispatch action is executed.
+store.subscribe(() => {
+    console.log('subscription', store.getState())
+});
 // DISPATCH  TYPE IS ALWAYS NEEDED.
 // takes arguments, and then trigger the change of state in the reducer
 // should always have a args type ->, and some optional payload.
@@ -48,4 +56,3 @@ store.dispatch({type: 'ADD_COUNTER', value: 10});
 
 console.log(store.getState());
 
-// subscription
