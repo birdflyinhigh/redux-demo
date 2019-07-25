@@ -34,11 +34,13 @@ const reducer = (state = initialState, action) => {
                 results: state.results.concat({id: new Date(), value:state.counter})
             };
         case actions.DELETE_RESULT:
+            // working the filtered copy of the array. this is great
+            const selectedId = action.payload;
+            const updatedResults = state.results.filter((item)=> selectedId !== item.id);
             return {
                 ...state,
-                results: state.results.concat({id: new Date(), value:state.counter})
+                results: updatedResults
             };
-
         default:
             return state
 
