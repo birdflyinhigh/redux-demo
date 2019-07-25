@@ -13,6 +13,8 @@ the store stores every states.
  + 4. subscriptions
  + 5. connect react to redux 
  + 6. connect store to react
+ + 7. dispatch actions to react component within the component 
+ 
  
  
  
