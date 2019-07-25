@@ -47,3 +47,5 @@ store.dispatch({type: 'ADD_COUNTER', value: 10});
 
 
 console.log(store.getState());
+
+// subscription
