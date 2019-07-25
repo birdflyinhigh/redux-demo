@@ -36,6 +36,7 @@ const store = createStore(rootReducer);
 console.log(store.getState());
 
 // DISPATCH  TYPE IS ALWAYS NEEDED.
+// takes arguments, and then trigger the change of state in the reducer
 store.dispatch({type: 'INC_COUNTER'});
 store.dispatch({type: 'ADD_COUNTER', value: 10});
 
